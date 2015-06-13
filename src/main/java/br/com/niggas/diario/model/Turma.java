@@ -39,7 +39,7 @@ public class Turma implements ModelEntity<Long> {
 	private Date dataFim;
 	private Long quantidadeAulas;
 
-	@ManyToMany(cascade = {CascadeType.ALL})
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name="ALUNOTURMA",
 	joinColumns={@JoinColumn(name="CODIGO_TURMA")},
 	inverseJoinColumns={@JoinColumn(name="CODIGO_ALUNO")})

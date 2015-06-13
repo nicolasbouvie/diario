@@ -83,12 +83,15 @@ public abstract class AbstractDao<T> {
 		return createQuery("FROM " + getPersistentClass().getSimpleName()).list();
 	}
 
-	public void remove(T object) {
+	public void remove(Object object) {
 		session.delete(object);
 	}
 
-	@SuppressWarnings("unchecked")
 	public void removeById(Serializable id) {
-		remove((T) createCriteria(eq("id", id)).uniqueResult());
+		remove(createCriteria(eq("id", id)).uniqueResult());
+	}
+
+	public void flush() {
+		session.flush();
 	}
 }
