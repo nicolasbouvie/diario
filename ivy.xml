@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ivy-module version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+    <info
+        organisation="imed"
+        module="juris"
+        status="integration">
+    </info>
+    <configurations>
+        <conf name="deploy" />
+        <conf name="dev" extends="deploy"/>
+    </configurations>
+    <dependencies>
+        <dependency org="br.com.caelum" name="vraptor" rev="4.1.4" conf="deploy->default" />
+        <dependency org="br.com.caelum.vraptor" name="vraptor-hibernate" rev="4.0.2" conf="deploy->default" />
+        
+        <dependency org="br.com.caelum.vraptor" name="vraptor-plugin-hibernate4" rev="1.0.0" conf="deploy->default">
+            <exclude module="hibernate-annotations" />
+            <exclude module="commons-annotations" />
+            <exclude module="vraptor-environment" />
+        </dependency>
+        
+        <dependency org="org.hibernate" name="hibernate-core" rev="4.3.8.Final" conf="deploy->default" />
+        <dependency org="org.hibernate" name="hibernate-validator-cdi" rev="5.1.1.Final" conf="deploy->default" />
+        <dependency org="org.postgresql" name="postgresql" rev="9.2-1003-jdbc4" conf="deploy->default"/>
+        
+        <dependency org="com.thoughtworks.xstream" name="xstream" rev="1.4.7" conf="deploy->default" />
+        <dependency org="commons-logging" name="commons-logging" rev="1.2" conf="dev->default" />
+        <dependency org="commons-httpclient" name="commons-httpclient" rev="3.1" conf="dev->default" />
+        <dependency org="net.jodah" name="typetools" rev="0.4.0" conf="deploy->default" />
+        <dependency org="javax.servlet" name="jstl" rev="1.2" conf="deploy->default" />
+        
+        <dependency org="emma" name="emma" rev="2.1.5320" conf="dev->master"/>
+        <dependency org="emma" name="emma_ant" rev="2.1.5320" conf="dev->master"/>
+        
+        <dependency org="org.mockito" name="mockito-all" rev="1.10.5" conf="dev->default" />
+        <dependency org="junit" name="junit" rev="4.11" conf="dev->default" />
+        
+		<dependency org="javax.servlet" name="servlet-api" rev="2.5" conf="dev->default"/>
+    </dependencies>
+</ivy-module>

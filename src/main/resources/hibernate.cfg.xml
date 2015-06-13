@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        
+		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/diarioclasse</property>
+		<property name="hibernate.connection.username">diario</property>
+		<property name="hibernate.connection.password">diario</property>
+        
+        <property name="hibernate.cache.provider_class">org.hibernate.cache.HashtableCacheProvider</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="format_sql">true</property>
+        
+        <!-- configuration pool via c3p0--> 
+        <property name="c3p0.acquire_increment">1</property> 
+        <property name="c3p0.idle_test_period">100</property> <!-- seconds --> 
+        <property name="c3p0.max_size">100</property> 
+        <property name="c3p0.max_statements">0</property> 
+        <property name="c3p0.min_size">2</property> 
+        <property name="c3p0.timeout">100</property> <!-- seconds -->         
+        
+        <property name="hibernate.hbm2ddl.auto">validate</property>
+
+        <mapping class="br.com.niggas.diario.model.Aluno" />
+        <mapping class="br.com.niggas.diario.model.Disciplina" />
+        <mapping class="br.com.niggas.diario.model.Frequencia" />
+        <mapping class="br.com.niggas.diario.model.Professor" />
+        <mapping class="br.com.niggas.diario.model.Turma" />
+    </session-factory>
+</hibernate-configuration>
